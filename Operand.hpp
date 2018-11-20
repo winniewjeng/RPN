@@ -12,9 +12,7 @@ class Operand : public Token {
     
 public:
     Operand(double num): _num(num) {}
-    void print(ostream& outs = cout) const {
-        outs << _num;
-    }
+    void print(ostream& outs = cout) const { outs << _num;}
     int get_type() {return 0;}
     double get_num() {return _num;}
 private:

@@ -55,9 +55,7 @@ node<T>* insert_after(node<T>* head_ptr, node<T>* mark, const T& item) {
     //    new_node->_next = mark->_next;
     //    mark->_next = new_node;
     
-    assert(mark != nullptr);
-    
-    
+    assert(mark != nullptr);   
     
     return insert_head(mark->_next, item);
 }
