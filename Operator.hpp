@@ -15,11 +15,19 @@ public:
     void print(ostream& outs = cout) const {
         outs << _symb;
     }
-    int get_type(){return 1;}
+    int get_type() {return 1;}
     
-    double do_math(Token* RHS, Token* LHS); //{
-//        static_cast<Operator*>(RHS)->
-//    }
+    double do_math(double LHS, double RHS) {
+        switch(_symb) {
+            case '+': return (LHS + RHS);
+            case '-': return (LHS - RHS);
+            case '*': return (LHS * RHS);
+            case '/': return (LHS / RHS);
+            default: cout << "unrecognizable operator\n";
+            return -1;
+        }
+    }
+    char get_symb() {return _symb;}
     
 private:
     char _symb;

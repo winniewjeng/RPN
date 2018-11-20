@@ -16,6 +16,7 @@ public:
         outs << _num;
     }
     int get_type() {return 0;}
+    double get_num() {return _num;}
 private:
     double _num;
 };

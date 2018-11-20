@@ -23,9 +23,9 @@ public:
     //NOT YET TESTED
     
     Queue(const Queue& other) {
-        this->front = copy_list(other->front);
+        this->front = copy_list(other.front);
         this->rear = LastNode(this->front);
-        this->size = other->size;
+        this->size = other.size;
     }
     
     //destructor

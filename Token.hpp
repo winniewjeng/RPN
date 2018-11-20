@@ -17,7 +17,7 @@ public:
         p->print();
         return outs;
     }
-    virtual int get_type(){return 0;}
+    virtual int get_type() {return -1;}
     
 private:
 };
