@@ -16,6 +16,7 @@ int main(int argc, const char * argv[]) {
 //    Queue<int> q;
 //    q.push(4);
 //    cout << q.pop() << endl;
+    cout << "testing git testing remote control " << endl;
     
     Queue<Token*> input;
 
