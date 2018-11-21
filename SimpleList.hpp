@@ -2,6 +2,7 @@
 
 #ifndef SimpleList_hpp
 #define SimpleList_hpp
+#include "LinkedList.hpp"
 
 template <typename T>
 class SimpleList {

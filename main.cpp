@@ -1,23 +1,22 @@
-
+#include "SimpleList.hpp"
 #include "Token.hpp"
 #include "Operand.hpp"
 #include "Operator.hpp"
 #include "Queue.hpp"
 #include <iostream>
 #include "Stack.hpp"
-#include "SimpleList.hpp"
 
 double Eval(Queue<Token*> postfix);
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-
+    
+//    cout << "hello world" << endl;
 //    Queue<int> q;
 //    q.push(4);
 //    cout << q.pop() << endl;
-    cout << "testing git testing remote control " << endl;
-    
+
     Queue<Token*> input;
 
     input.push(new Operand(4));
@@ -25,21 +24,20 @@ int main(int argc, const char * argv[]) {
     input.push(new Operator('+'));
     input.push(new Operand(5));
     input.push(new Operator('*'));
-    
-    
+
     cout << input << endl;
-    
+
     double result = Eval(input);
     cout << result << endl;
-    
+
     return 0;
 }
 
 double Eval(Queue<Token*> postfix) {
-    
+
     //a stack that stores double* Operands
     Stack<double> s;
-    
+
     while (!postfix.empty()) {
         //get the top Token* in the queue
         Token* p = postfix.top();
@@ -68,7 +66,7 @@ double Eval(Queue<Token*> postfix) {
         // house keeping - shrink the postfix queue
         postfix.pop();
     }
-    
+
     return s.top();
 };
 

@@ -13,7 +13,10 @@ public:
     //print fxn to print it
     virtual void print(ostream& outs = cout) const {}
     //ostream
-    friend ostream& operator<<(ostream& outs, const Token* p);
+    friend ostream& operator<<(ostream& outs, const Token* p) {
+        p->print();
+        return outs;
+    }
     virtual int get_type() {return -1;}
     
 private:
