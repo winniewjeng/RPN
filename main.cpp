@@ -27,7 +27,8 @@ int main(int argc, const char * argv[]) {
     
     Queue<Token*> infix = toToken(expression);
     cout << infix << endl;
-    
+    Queue<Token*> postfix = toPostFix(infix);
+    cout << postfix << endl;
     return 0;
     
     /*
@@ -120,23 +121,45 @@ Queue<Token*> toPostFix(Queue<Token*> infix) {
     // get an operator stack
     Stack<Operator*> optr;
     
-    // if infix Token* is of type Operand(0), i.e. number digit, push into the postfix queue
-    // if infix Token* is of type Operator(1) && stack is not empty check precedence
-    //      if infix.top() is ')', pop optrs in stack and push to postfix queue until optr == '('
-    //      if infix.top() has_precedence over optr in stack, pop stack and push the pop into postfix queue
-    // then push into stack
     while (!infix.empty()) {
         
         Token* item = infix.pop();
         if (item->get_type() == 0) {
-            // item is a number
+            // item is a number-->push item into the postfix queue
             postfix.push(item);
         }
         else {
-            // item is an operator-->check precedence
-            if(optr.top()->has_precedence(<#Operator *other#>)) {}
+            // if item is an operator, cast it as such
+            Operator* optr_item = static_cast<Operator*>(item);
+            
+            if (optr.empty()) {
+                // if stack is empty-->push optr_item into the stack
+                optr.push(optr_item);
+            } else {
+                // if stack is not empty, check 1) for paranthesis, 2) for precedence
+                if (optr_item->get_symb() == ")") {
+                    //if optr_item is a closed paranthesis: keep poping the stack and pushing the popped item into the postfix queue until finding its counterpart
+                    infix.pop(); // get rid of the ")" closed paranthesis in infix
+                    while (optr.top()->get_symb() != "(") {
+                        postfix.push(optr.pop());
+                    }
+                    optr.pop(); // get rid of the "(" opened paranthesis in stack
+                } else if (optr_item->has_precedence(optr.top())) {
+                    // if operator has precedence over the top operator in stack--> 1) pop stack and push the popped into postfix queue and 2) push optr_item into optr stack
+                    postfix.push(optr.pop());
+                    optr.push(optr_item);
+                }
+                else {
+                    optr.push(optr_item);
+                }
+            }
         }
         
+        if (infix.empty()) {
+            while(!optr.empty()) {
+                postfix.push(optr.pop());
+            }
+        }
     }
     
     return postfix;

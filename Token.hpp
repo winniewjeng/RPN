@@ -18,6 +18,7 @@ public:
         return outs;
     }
     virtual int get_type() {return -1;}
+    virtual bool has_precedence() {return false;}
     
 private:
 };
