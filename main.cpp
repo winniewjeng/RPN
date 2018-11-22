@@ -10,6 +10,8 @@
 double Eval(Queue<Token*> postfix);
 //parse the user-input string into tokens and store them in queue
 Queue<Token*> toToken(string expression);
+//convert the infix queue to a post-fix queue using Shunting-Yard algorithm
+Queue<Token*> toPostFix(Queue<Token*> infix);
 // check if eval is working
 void test_eval();
 
@@ -19,22 +21,23 @@ int main(int argc, const char * argv[]) {
     
 //    test_eval();
     
-    string infix;
+    string expression;
     cout << "Enter the operation: ";
-    cin >> infix;
+    cin >> expression;
     
-    cout << toToken(infix) << endl;
+    Queue<Token*> infix = toToken(expression);
+    cout << infix << endl;
+    
+    
     
     
     return 0;
     
     /*
      attack plan:
-     //get an infix order string
-     //parse the string into token and store it in queue
-     //perform operations:
+
      //get a populated queue of infix tokens
-     
+     //shunting-yard alogrithm
      //get an emptry queue of postfix tokens
      //get a stack of operator tokens
      //if it's a number, add it to the output
@@ -72,34 +75,11 @@ Queue<Token*> toToken(string infix) {
             optr_str = "";
         }
         
-        //trig detected
+        //trig detected...NOT YET IMPLEMENTED
         //if (isalpha(infix[i])) {}
         
     }
-    //    cout << endl;
-    //    cout << input << endl;
     return input;
-    //    //get an infixQ
-    //    Queue<Token*> infixQ;
-    //    //loop through user-input infix expression string
-    //    for (int i = 0; i <expression.size(); i++) {
-    //        // char element of the string is an operand (a number)
-    //        if (isdigit(expression[i])) {
-    //            cout << expression[i] << endl;
-    //            //convert the char into double
-    //            double digit = isdigit(expression[i]);
-    //            cout << digit << endl;;
-    //            //push the element into the infix Queue
-    //            infixQ.push(new Operand(digit));
-    //        }
-    //        // char element of the string is an operator
-    //        else {
-    //            //push the element into the infix Queue
-    //            infixQ.push(new Operator(expression[i]));
-    //        }
-    //        //        cout << infixQ << endl;
-    //    }
-    //    return infixQ;
 }
 
 double Eval(Queue<Token*> postfix) {
