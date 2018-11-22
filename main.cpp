@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-//    test_eval();
+    //    test_eval();
     
     string expression;
     cout << "Enter the operation: ";
@@ -28,14 +28,10 @@ int main(int argc, const char * argv[]) {
     Queue<Token*> infix = toToken(expression);
     cout << infix << endl;
     
-    
-    
-    
     return 0;
     
     /*
      attack plan:
-
      //get a populated queue of infix tokens
      //shunting-yard alogrithm
      //get an emptry queue of postfix tokens
@@ -117,6 +113,34 @@ double Eval(Queue<Token*> postfix) {
     
     return s.top();
 };
+
+Queue<Token*> toPostFix(Queue<Token*> infix) {
+    // get a postfix queue
+    Queue<Token*> postfix;
+    // get an operator stack
+    Stack<Operator*> optr;
+    
+    // if infix Token* is of type Operand(0), i.e. number digit, push into the postfix queue
+    // if infix Token* is of type Operator(1) && stack is not empty check precedence
+    //      if infix.top() is ')', pop optrs in stack and push to postfix queue until optr == '('
+    //      if infix.top() has_precedence over optr in stack, pop stack and push the pop into postfix queue
+    // then push into stack
+    while (!infix.empty()) {
+        
+        Token* item = infix.pop();
+        if (item->get_type() == 0) {
+            // item is a number
+            postfix.push(item);
+        }
+        else {
+            // item is an operator-->check precedence
+            if(optr.top()->has_precedence(<#Operator *other#>)) {}
+        }
+        
+    }
+    
+    return postfix;
+}
 
 void test_eval() {
     
