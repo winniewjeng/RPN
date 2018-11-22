@@ -27,7 +27,13 @@ public:
                 return -1;
         }
     }
+    
     char get_symb() {return _symb;}
+    
+    //check order of operation over the token below you
+    bool has_precedence(Operator* last, Operator* current) {
+        return true;
+    }
     
 private:
     char _symb;
