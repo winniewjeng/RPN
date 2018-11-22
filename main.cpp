@@ -20,9 +20,109 @@ int main(int argc, const char * argv[]) {
     //    q.push(4);
     //    cout << q.pop() << endl;
     
-    //    string infix;
-    //    cout << "Enter the operation: ";
-    //    cin >> infix;
+    string infix;
+    cout << "Enter the operation: ";
+    cin >> infix;
+    
+    // parse string into chars and store them inside a char queue
+    Queue<char> infixCharQ;
+    string num_str;
+    string trig_str;
+    Queue<Token*> input;
+    
+    for (int i = 0; i < infix.size(); i++) {
+        
+        if (isdigit(infix[i]) || infix[i] == '.') {
+            //form operand
+            while (isdigit(infix[i]) || infix[i] == '.') {
+                num_str+=infix[i];
+                i++;
+            }
+//            cout << num_str << "\n";
+            double number = stod(num_str);
+            input.push(new Operand(number));
+            num_str="";
+        }
+        
+//        cout << infix[i] << endl;
+        trig_str+= infix[i];
+        input.push(new Operator(trig_str));
+        trig_str = "";
+        //account for sine and cosine and tangent in this funciton too
+//        if (!isdigit(infix[i]) && infix[i] != '.') {
+//            trig_str = infix[i];
+//            while (!isdigit(infix[i]) && infix[i] != '.') {
+//                trig_str+=infix[i];
+//                i++;
+//            }
+//            cout << trig_str << "\n";
+//            input.push(new Operator(trig_str));
+//            trig_str="";
+//        }
+        
+//        else {
+//            cout << "her";
+//            cout << infix[i] << " ";
+//        }
+    }
+    
+    cout << endl;
+    cout << input << endl;
+    //    cout << infixCharQ << endl;
+    
+    
+    // parse the char queue, turn the numbers into numbers, and store them all inside a token queue
+    //    while( !infixCharQ.empty() ) {
+    //        cout << infixCharQ.top() << " ";
+    //
+    //        infixCharQ.pop();
+    //        if ( isdigit(infixCharQ.top()) || infixCharQ.top() == '.' ) {
+    //            //cout << infixCharQ.top() << " ";
+    //            num_str += infixCharQ.top();
+    //
+    //        } else {
+    //            cout << num_str << endl;
+    //            //convert num_string to double
+    //            double number = stod(num_str);
+    //            //create a new number token and push it to the token queue input
+    //            input.push(new Operand(number));
+    //            //resetting num_string
+    //            num_str = "";
+    //            //cout << " | " << infixCharQ.top() << " | ";
+    //            //push the top of the infixCharQueue also to the queue
+    //            input.push(new Operator(infixCharQ.top()));
+    //        }
+    //
+    //        infixCharQ.pop();
+    
+    //    }
+    //    cout << input << endl;
+    
+    
+    //    Queue<Token*> input;
+    //
+    //    input.push(new Operand(4));
+    //    input.push(new Operand(2));
+    //    input.push(new Operator('+'));
+    //    input.push(new Operand(5));
+    //    input.push(new Operator('*'));
+    //
+    //    cout << "Evaluate: " << endl;
+    //    cout << input << " = " << Eval(input) << endl;
+    //
+    //    Queue<Token*> input2;
+    //
+    //    input2.push(new Operand(8));
+    //    input2.push(new Operand(3));
+    //    input2.push(new Operator('-'));
+    //    input2.push(new Operand(5));
+    //    input2.push(new Operator('+'));
+    //    input2.push(new Operand(5));
+    //    input2.push(new Operator('-'));
+    //
+    //    cout << input2 << " = " << Eval(input2) << endl;
+    
+    return 0;
     
     //    for (int i = 0; i < infix.size(); i++) {
     //        //while the element in string is digit or decimal, get the whole number before tokenizing
@@ -97,56 +197,31 @@ int main(int argc, const char * argv[]) {
      //if not, add it pop a stack to the postfix queue and push operator to stack
      //keep doing it until stack operator tokens has no more element
      */
-    
-    Queue<Token*> input;
-    
-    input.push(new Operand(4));
-    input.push(new Operand(2));
-    input.push(new Operator('+'));
-    input.push(new Operand(5));
-    input.push(new Operator('*'));
-
-    cout << "Evaluate: " << endl;
-    cout << input << " = " << Eval(input) << endl;
-    
-    Queue<Token*> input2;
-//
-    input2.push(new Operand(8));
-    input2.push(new Operand(3));
-    input2.push(new Operator('-'));
-    input2.push(new Operand(5));
-    input2.push(new Operator('+'));
-    input2.push(new Operand(5));
-    input2.push(new Operator('-'));
-    
-    cout << input2 << " = " << Eval(input2) << endl;
-    
-    return 0;
 }
 
-Queue<Token*> toToken(string expression) {
-    //get an infixQ
-    Queue<Token*> infixQ;
-    //loop through user-input infix expression string
-    for (int i = 0; i <expression.size(); i++) {
-        // char element of the string is an operand (a number)
-        if (isdigit(expression[i])) {
-            cout << expression[i] << endl;
-            //convert the char into double
-            double digit = isdigit(expression[i]);
-            cout << digit << endl;;
-            //push the element into the infix Queue
-            infixQ.push(new Operand(digit));
-        }
-        // char element of the string is an operator
-        else {
-            //push the element into the infix Queue
-            infixQ.push(new Operator(expression[i]));
-        }
-        //        cout << infixQ << endl;
-    }
-    return infixQ;
-}
+//Queue<Token*> toToken(string expression) {
+//    //get an infixQ
+//    Queue<Token*> infixQ;
+//    //loop through user-input infix expression string
+//    for (int i = 0; i <expression.size(); i++) {
+//        // char element of the string is an operand (a number)
+//        if (isdigit(expression[i])) {
+//            cout << expression[i] << endl;
+//            //convert the char into double
+//            double digit = isdigit(expression[i]);
+//            cout << digit << endl;;
+//            //push the element into the infix Queue
+//            infixQ.push(new Operand(digit));
+//        }
+//        // char element of the string is an operator
+//        else {
+//            //push the element into the infix Queue
+//            infixQ.push(new Operator(expression[i]));
+//        }
+//        //        cout << infixQ << endl;
+//    }
+//    return infixQ;
+//}
 
 double Eval(Queue<Token*> postfix) {
     //a stack that stores double* Operands

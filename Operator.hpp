@@ -11,24 +11,28 @@ class Token;
 class Operator : public Token {
     
 public:
-    Operator(char symb): _symb(symb) {}
+    Operator(string symb): _symb(symb) {}
     void print(ostream& outs = cout) const {
         outs << _symb;
     }
     int get_type() {return 1;}
     
     double do_math(double LHS, double RHS) {
-        switch(_symb) {
-            case '+': return (LHS + RHS);
-            case '-': return (LHS - RHS);
-            case '*': return (LHS * RHS);
-            case '/': return (LHS / RHS);
-            default: cout << "unrecognizable operator\n";
-                return -1;
+        if (_symb == "+") {
+            return (LHS + RHS);
+        } else if (_symb == "-") {
+            return (LHS - RHS);
+        } else if (_symb == "*") {
+            return (LHS * RHS);
+        } else if (_symb == "/") {
+            return (LHS / RHS);
+        } else {
+            cout << "unrecognizable operator\n";
         }
+        return -1;
     }
     
-    char get_symb() {return _symb;}
+    string get_symb() {return _symb;}
     
     //check order of operation over the token below you
     bool has_precedence(Operator* last, Operator* current) {
@@ -36,7 +40,7 @@ public:
     }
     
 private:
-    char _symb;
+    string _symb;
 };
 
 #endif /* Operator_hpp */

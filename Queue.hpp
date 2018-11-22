@@ -124,7 +124,9 @@ public:
     friend ostream& operator<<(ostream& outs, const Queue<U>& q) {
         node<U>* walker = q.front;
         while (walker != q.rear) {
-            outs << " [" << walker->_item << "]";
+            if (walker->_next != q.rear) {
+                outs << " [" << walker->_item << "]";
+            }
             walker = walker->_next;
         }
         return outs;
