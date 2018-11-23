@@ -36,7 +36,7 @@ public:
     
     //check order of precedence with the next token in stack
     bool has_precedence(Operator* other) {
-        if (other->_symb == "*" || other->_symb == "/") {
+        if (other->_symb != "*" || other->_symb != "/") {
             return false;
         }
         return true;
