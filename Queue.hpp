@@ -74,7 +74,8 @@ public:
             //            walker->_next = rear;
         }// Does this work?
         else {
-            
+            // a more efficient algorith is rear = insert_after
+            // and get rid of the walker and wile loop and LastNode
             while (walker->_next != rear) {
                 walker = walker->_next;
             }

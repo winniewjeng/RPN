@@ -11,6 +11,7 @@
 		1867DBD021A5F847007798B4 /* Operand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1867DBCA21A5F847007798B4 /* Operand.cpp */; };
 		1867DBD121A5F847007798B4 /* Operator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1867DBCB21A5F847007798B4 /* Operator.cpp */; };
 		1867DBD221A5F847007798B4 /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1867DBCF21A5F847007798B4 /* Token.cpp */; };
+		2D66FD3921AC908400BFBDDD /* ShuntingYard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D66FD3821AC908400BFBDDD /* ShuntingYard.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,9 @@
 		1867DBCD21A5F847007798B4 /* Operator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operator.hpp; sourceTree = "<group>"; };
 		1867DBCE21A5F847007798B4 /* Token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
 		1867DBCF21A5F847007798B4 /* Token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
+		2D66FD3321AC8DA600BFBDDD /* Variable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Variable.hpp; sourceTree = "<group>"; };
+		2D66FD3621AC905500BFBDDD /* ShuntingYard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShuntingYard.hpp; sourceTree = "<group>"; };
+		2D66FD3821AC908400BFBDDD /* ShuntingYard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShuntingYard.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,9 @@
 		1800ABB3219B5AC000AC5681 = {
 			isa = PBXGroup;
 			children = (
+				2D66FD3821AC908400BFBDDD /* ShuntingYard.cpp */,
+				2D66FD3621AC905500BFBDDD /* ShuntingYard.hpp */,
+				2D66FD3321AC8DA600BFBDDD /* Variable.hpp */,
 				1867DBC621A5F798007798B4 /* LinkedList.hpp */,
 				1867DBC721A5F7B3007798B4 /* SimpleList.hpp */,
 				1867DBC921A5F806007798B4 /* Stack.hpp */,
@@ -135,6 +142,7 @@
 			files = (
 				1867DBD121A5F847007798B4 /* Operator.cpp in Sources */,
 				1867DBC521A5F73F007798B4 /* main.cpp in Sources */,
+				2D66FD3921AC908400BFBDDD /* ShuntingYard.cpp in Sources */,
 				1867DBD021A5F847007798B4 /* Operand.cpp in Sources */,
 				1867DBD221A5F847007798B4 /* Token.cpp in Sources */,
 			);
