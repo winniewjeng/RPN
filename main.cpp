@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-    test_eval();
+//    test_eval();
     
     string expression;
     cout << "Enter the operation: ";
@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
     cout << "the infix expression is " << infix << endl;
     Queue<Token*> postfix = toPostFix(infix);
     cout << "the postfix expression is " << postfix << endl;
+    cout << "the evaluated postfix expression is " << Eval(postfix) << endl;
     return 0;
 }
 
@@ -37,7 +38,6 @@ double Eval(Queue<Token*> postfix) {
         //cout << p << " ";
         double LHS;
         double RHS;
-        
         // if Token* is of type Operand(0), i.e. number digit, push into stack
         // if Token* is of type Operator(1), pop stack twice and do the math
         if (p->get_type() == 0) {
@@ -77,17 +77,5 @@ void test_eval() {
     
     cout << "Evaluate: " << endl;
     cout << input << " = " << Eval(input) << endl;
-    
-    Queue<Token*> input2;
-    
-    input2.push(new Operand(4.0));
-    input2.push(new Operand(5.0));
-    input2.push(new Operand(9.0));
-    input2.push(new Operand(20));
-    input2.push(new Operator("/"));
-    input2.push(new Operator("*"));
-    input2.push(new Operator("-"));
-    
-    cout << input2 << " = " << Eval(input2) << endl;
 };
 
