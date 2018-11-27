@@ -183,7 +183,6 @@ T delete_head(node<T>*& head_ptr) {
     return hold_this;
 }
 
-
 //IMPLEMENTED
 
 template<typename T>

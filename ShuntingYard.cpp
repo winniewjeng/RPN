@@ -6,6 +6,7 @@ Queue<Token*> toToken(string expression) {
     string num_str;
     string optr_str; // operator string
     Queue<Token*> infix;
+    cout << "expression is|" << expression << "|\n";
     
     for (int i = 0; i < expression.size(); i++) {
         // if the element in string is a digit, get the whole number and push it to Queue
@@ -17,14 +18,16 @@ Queue<Token*> toToken(string expression) {
             }
             double number = stod(num_str);
             infix.push(new Operand(number));
+            cout << "digit: infix is now " << infix << endl;
             // reset the num_str for clean reading of the next number
             num_str="";
         }
         
         // if the element in string is an operator, get the operator and push it to Queue
-        if (!isdigit(expression[i]) && !isalpha(expression[i])) {
+        if (!isdigit(expression[i]) && !isalpha(expression[i]) && expression[i] != ' ') {
             optr_str += expression[i];
             infix.push(new Operator(optr_str));
+            cout << "operator: infix is now " << infix << endl;
             // reset the optr_str for clean reading of the next operator
             optr_str = "";
         }
@@ -37,6 +40,7 @@ Queue<Token*> toToken(string expression) {
                 i++;
             }
             infix.push(new Operator(optr_str));
+            cout << "alpha: infix is now " << infix << endl;
             // reset the optr_str for clean reading of the next operator
             optr_str = "";
         }
