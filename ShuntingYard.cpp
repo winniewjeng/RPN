@@ -67,15 +67,15 @@ Queue<Token*> toPostFix(Queue<Token*> infix) {
             Operator* optr_item = static_cast<Operator*>(item);
             // if optr stack is empty, push optr_item straight in
             if (optr.empty()) {
-                //                cout << item << " 1" << endl;
+                // cout << item << " 1" << endl;
                 // if stack is empty-->push optr_item into the stack
                 optr.push(optr_item);
-                //                cout << "optr stack is " << optr << endl;
-                //                cout << "postfix queue is " << postfix << endl;
+                // cout << "optr stack is " << optr << endl;
+                // cout << "postfix queue is " << postfix << endl;
             }
             // if optr stack is not empty, check for paranthesis and then general precedence
             else {
-                //                cout << item << " 2" << endl;
+                // cout << item << " 2" << endl;
                 // if optr_item (popped from infix queue) is a closed paranthesis,
                 if (optr_item->get_symb() == ")" ) {
                     // then pop the stack & store each item in the postfix queue until finding the open parenthesis
@@ -97,8 +97,8 @@ Queue<Token*> toPostFix(Queue<Token*> infix) {
                 else {
                     optr.push(optr_item);
                 }
-                //                cout << "optr stack is " << optr << endl;
-                //                cout << "postfix queue is " << postfix << endl;
+                // cout << "optr stack is " << optr << endl;
+                // cout << "postfix queue is " << postfix << endl;
             }
         }
         
